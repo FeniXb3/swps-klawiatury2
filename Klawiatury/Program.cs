@@ -2,7 +2,9 @@
 Player hero = new Player("Snake");
 
 Console.WriteLine($"({hero.x}, {hero.y})");
-
+hero.speed = 3;
+hero.x = 119;
+hero.y = 3;
 while (true)
 {
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
@@ -12,28 +14,28 @@ while (true)
 
     if (pressedKeyInfo.Key == ConsoleKey.A)
     {
-        if (hero.x > 0)
+        if (hero.x >= hero.speed)
         {
             hero.x -= hero.speed;
         }
     }
     if (pressedKeyInfo.Key == ConsoleKey.D)
     {
-        if (hero.x < Console.BufferWidth - 1)
+        if (hero.x <= Console.BufferWidth - 1 - hero.speed)
         {
             hero.x += hero.speed;
         }
     }
     if (pressedKeyInfo.Key == ConsoleKey.W)
     {
-        if (hero.y > 0)
+        if (hero.y >= hero.speed)
         {
             hero.y -= hero.speed;
         }
     }
     if (pressedKeyInfo.Key == ConsoleKey.S)
     {
-        if (hero.y < Console.BufferHeight - 1)
+        if (hero.y <= Console.BufferHeight - 1 - hero.speed)
         {
             hero.y += hero.speed;
         }
