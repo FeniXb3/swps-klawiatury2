@@ -5,6 +5,13 @@ Console.WriteLine($"({hero.x}, {hero.y})");
 hero.speed = 3;
 hero.x = 119;
 hero.y = 3;
+
+Dictionary<ConsoleKey, Point> directionsMap = new Dictionary<ConsoleKey, Point>();
+directionsMap.Add(ConsoleKey.A, new Point(-hero.speed, 0));
+directionsMap.Add(ConsoleKey.D, new Point(hero.speed, 0));
+directionsMap.Add(ConsoleKey.W, new Point(0, -hero.speed));
+directionsMap.Add(ConsoleKey.S, new Point(0, hero.speed));
+
 while (true)
 {
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
@@ -12,26 +19,7 @@ while (true)
     Console.SetCursorPosition(hero.x, hero.y);
     Console.Write(" ");
 
-    Point direction;
-
-    switch (pressedKeyInfo.Key)
-    {
-        case ConsoleKey.A:
-            direction = new Point(-hero.speed, 0);
-            break;
-        case ConsoleKey.D:
-            direction = new Point(hero.speed, 0);
-            break;
-        case ConsoleKey.W:
-            direction = new Point(0, -hero.speed);
-            break;
-        case ConsoleKey.S:
-            direction = new Point(0, hero.speed);
-            break;
-        default:
-            direction = new Point(0, 0);
-            break;
-    }
+    Point direction = directionsMap[pressedKeyInfo.Key];
 
     hero.x += direction.x;
     hero.y += direction.y;
