@@ -12,21 +12,35 @@ while (true)
     Console.SetCursorPosition(hero.x, hero.y);
     Console.Write(" ");
 
+    int directionX;
+    int directionY;
+
     switch (pressedKeyInfo.Key)
     {
         case ConsoleKey.A:
-            hero.x -= hero.speed;
+            directionX = -hero.speed;
+            directionY = -0;
             break;
         case ConsoleKey.D:
-            hero.x += hero.speed;
+            directionX = hero.speed;
+            directionY = 0;
             break;
         case ConsoleKey.W:
-            hero.y -= hero.speed;
+            directionX = -0;
+            directionY = -hero.speed;
             break;
         case ConsoleKey.S:
-            hero.y += hero.speed;
+            directionX = 0;
+            directionY = hero.speed;
+            break;
+        default:
+            directionX = 0;
+            directionY = 0;
             break;
     }
+
+    hero.x += directionX;
+    hero.y += directionY;
 
     hero.x = Math.Clamp(hero.x, 0, Console.BufferWidth - 1);
     hero.y = Math.Clamp(hero.y, 0, Console.BufferHeight - 1);
