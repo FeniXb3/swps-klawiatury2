@@ -17,29 +17,39 @@ while (true)
     switch (pressedKeyInfo.Key)
     {
         case ConsoleKey.A:
-            direction = new Point();
-            direction.x = -hero.speed;
-            direction.y = -0;
+            direction = new Point
+            {
+                x = -hero.speed,
+                y = -0
+            };
             break;
         case ConsoleKey.D:
-            direction = new Point();
-            direction.x = hero.speed;
-            direction.y = 0;
+            direction = new Point
+            {
+                x = hero.speed,
+                y = 0
+            };
             break;
         case ConsoleKey.W:
-            direction = new Point();
-            direction.x = -0;
-            direction.y = -hero.speed;
+            direction = new Point
+            {
+                x = -0,
+                y = -hero.speed
+            };
             break;
         case ConsoleKey.S:
-            direction = new Point();
-            direction.x = 0;
-            direction.y = hero.speed;
+            direction = new Point
+            {
+                x = 0,
+                y = hero.speed
+            };
             break;
         default:
-            direction = new Point();
-            direction.x = 0;
-            direction.y = 0;
+            direction = new Point
+            {
+                x = 0,
+                y = 0
+            };
             break;
     }
 
