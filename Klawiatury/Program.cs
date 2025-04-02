@@ -6,7 +6,7 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
-Player hero = new Player("Snake", new Point(119, 3));
+Player hero = new Player("Snake", "@", new Point(119, 3));
 
 while (true)
 {
@@ -14,7 +14,7 @@ while (true)
     Console.WriteLine($"({hero.position.x}, {hero.position.y})     ");
 
     Console.SetCursorPosition(hero.position.x, hero.position.y);
-    Console.Write("@");
+    Console.Write(hero.avatar);
     
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
 
