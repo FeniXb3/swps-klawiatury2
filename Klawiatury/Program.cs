@@ -6,11 +6,7 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
-Player hero = new Player("Snake");
-
-hero.speed = 1;
-hero.position.x = 119;
-hero.position.y = 3;
+Player hero = new Player("Snake", new Point(119, 3));
 
 while (true)
 {

@@ -9,4 +9,10 @@ class Player
         this.name = name;
         position = new Point(0, 0);
     }
+
+    public Player(string name, Point position)
+    {
+        this.name = name;
+        this.position = position;
+    }
 }
