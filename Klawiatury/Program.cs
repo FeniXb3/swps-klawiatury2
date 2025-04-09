@@ -6,7 +6,8 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
-Player hero = new Player("Snake", "@", new Point(119, 3));
+Point startingPosition =  new Point(119, 3);
+Player hero = new Player("Snake", "@", startingPosition);
 List<Player> clones = new List<Player>();
 clones.Add(hero);
 
@@ -49,7 +50,7 @@ while (true)
         switch (pressedKeyInfo.Key)
         {
             case ConsoleKey.C:
-                Player clone = new Player(hero.name,  "C", new Point(119, 3));
+                Player clone = new Player(hero.name,  "C", startingPosition);
                 clones.Add(clone);
                 break;
         }
