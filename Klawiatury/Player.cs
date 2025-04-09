@@ -16,7 +16,6 @@ class Player
     {
         this.name = name;
         this.avatar = avatar;
-        // this.position = position;
-        this.position = new Point(position.x, position.y);
+        this.position = position;
     }
 }
