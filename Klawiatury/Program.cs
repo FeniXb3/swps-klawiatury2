@@ -6,18 +6,28 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
-Point startingPosition =  new Point(119, 3);
+Point startingPosition =  new Point(4, 3);
 Player hero = new Player("Snake", "@", startingPosition);
 List<Player> clones = new List<Player>();
 clones.Add(hero);
+
+Console.WriteLine("###################################");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("#.................................#");
+Console.WriteLine("###################################");
 
 while (true)
 {
     foreach (Player element in clones)
     {
-        Console.SetCursorPosition(0, 0);
-        Console.WriteLine($"({element.position.x}, {element.position.y})     ");
-
         Console.SetCursorPosition(element.position.x, element.position.y);
         Console.Write(element.avatar);
     }
@@ -42,7 +52,7 @@ while (true)
             element.position.x = Math.Clamp(element.position.x, 0, Console.BufferWidth - 1);
             element.position.y = Math.Clamp(element.position.y, 0, Console.BufferHeight - 1);
 
-            element.speed += 1;
+            // element.speed += 1;
         }
     }
     else
