@@ -60,6 +60,9 @@ class Player
         return target;
     }
 
+    /// <summary>
+    /// Displays player avatar on the console.
+    /// </summary>
     public void Display()
     {
         Console.SetCursorPosition(position.x, position.y);
