@@ -6,7 +6,7 @@ directionsMap.Add(ConsoleKey.D, new Point(1, 0));
 directionsMap.Add(ConsoleKey.W, new Point(0, -1));
 directionsMap.Add(ConsoleKey.S, new Point(0, 1));
 
-Point startingPosition =  new Point(4, 0);
+Point startingPosition = new Point(4, 0);
 Player hero = new Player("Snake", "@", startingPosition);
 List<Player> clones = new List<Player>();
 clones.Add(hero);
@@ -38,15 +38,12 @@ while (true)
     {
         element.Display();
     }
-    
+
     ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
 
     foreach (Player element in clones)
     {
-        Console.SetCursorPosition(element.position.x, element.position.y);
-        string row = level[element.position.y];
-        char cellData = row[element.position.x];
-        Console.Write(cellData); 
+        RedrawCell(element.position);
     }
 
     if (directionsMap.ContainsKey(pressedKeyInfo.Key))
@@ -64,7 +61,7 @@ while (true)
         switch (pressedKeyInfo.Key)
         {
             case ConsoleKey.C:
-                Player clone = new Player(hero.name,  "C", startingPosition);
+                Player clone = new Player(hero.name, "C", startingPosition);
                 clones.Add(clone);
                 break;
         }
@@ -79,6 +76,13 @@ do
     consoleKeyInfo = Console.ReadKey(true);
 } while (consoleKeyInfo.Key != ConsoleKey.Spacebar);
 
+void RedrawCell(Point position)
+{
+    Console.SetCursorPosition(position.x, position.y);
+    string row = level[position.y];
+    char cellData = row[position.x];
+    Console.Write(cellData);
+}
 
 /*
 Player - klasa
