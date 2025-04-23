@@ -32,7 +32,9 @@ foreach (string row in level)
     Console.WriteLine(row);
 }
 
-while (true)
+bool isPlaying = true;
+
+while (isPlaying)
 {
     foreach (Player element in clones)
     {
@@ -63,6 +65,9 @@ while (true)
             case ConsoleKey.C:
                 Player clone = new Player(hero.name, "C", startingPosition);
                 clones.Add(clone);
+                break;
+            case ConsoleKey.Escape:
+                isPlaying = false;
                 break;
         }
     }
