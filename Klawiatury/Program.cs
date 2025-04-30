@@ -64,7 +64,6 @@ while (isPlaying)
         foreach (Player element in clones)
         {
             element.Move(direction, level);
-            element.speed += 1;
         }
     }
     else
