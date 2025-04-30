@@ -19,6 +19,8 @@ Player hero = new Player("Snake", "@", startingPosition);
 List<Player> clones = new List<Player>();
 clones.Add(hero);
 
+NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20, 8));
+
 string[] level =
 [
     "####.###################################",
@@ -49,6 +51,8 @@ while (isPlaying)
         element.Display();
     }
 
+    npc.Display();
+
     string chosenAction = hero.ChooseAction(keyActionMap);
 
     foreach (Player element in clones)
@@ -78,6 +82,11 @@ while (isPlaying)
                 break;
         }
     }
+
+    RedrawCell(npc.position);
+    string npcAction = npc.ChooseAction(keyActionMap);
+    Point npcDirection = directionsMap[npcAction];
+    npc.Move(npcDirection, level);
 }
 
 Console.SetCursorPosition(0, level.Length);
