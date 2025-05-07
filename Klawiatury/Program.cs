@@ -60,8 +60,9 @@ bool isPlaying = true;
 
 while (isPlaying)
 {
-    foreach (Character element in characters)
+    for (int i = 0; i < characters.Count; i++)
     {
+        Character element = characters[i];
         string chosenAction = element.ChooseAction();
         
         if (directionsMap.ContainsKey(chosenAction))
@@ -79,6 +80,7 @@ while (isPlaying)
                     Player clone = new Player(hero.name, "C", startingPosition, keyActionMap);
                     clones.Add(clone);
                     characters.Add(clone);
+                    clone.Display();
                     break;
                 case "quitGame":
                     isPlaying = false;
