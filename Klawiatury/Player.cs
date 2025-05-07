@@ -1,6 +1,7 @@
 
 class Player : Character
 {
+    public string chosenAction;
     Dictionary<ConsoleKey, string> keyBindings;
 
     public Player(string name, string avatar) : base(name, avatar)
@@ -15,7 +16,7 @@ class Player : Character
     public override string ChooseAction()
     {
         ConsoleKeyInfo pressedKeyInfo = Console.ReadKey(true);
-        string chosenAction = keyBindings.GetValueOrDefault(pressedKeyInfo.Key, "none");
+        chosenAction = keyBindings.GetValueOrDefault(pressedKeyInfo.Key, "none");
 
         return chosenAction;
     }

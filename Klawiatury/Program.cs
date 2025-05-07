@@ -83,7 +83,7 @@ while (isPlaying)
             switch (chosenAction)
             {
                 case "clone":
-                    PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, keyActionMap);
+                    PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, keyActionMap, hero);
                     clones.Add(clone);
                     characters.Add(clone);
                     clone.Display();
