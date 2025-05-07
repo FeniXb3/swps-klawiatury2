@@ -14,10 +14,13 @@ directionsMap.Add("moveRight", new Point(1, 0));
 directionsMap.Add("moveUp", new Point(0, -1));
 directionsMap.Add("moveDown", new Point(0, 1));
 
+List<Character> characters = new List<Character>();
+
 Point startingPosition = new Point(4, 0);
 Player hero = new Player("Snake", "@", startingPosition, keyActionMap);
 List<Player> clones = new List<Player>();
 clones.Add(hero);
+characters.Add(hero);
 
 List<NonPlayerCharacter> npcs = new List<NonPlayerCharacter>();
 
@@ -25,6 +28,7 @@ for (int i = 0; i < 10; i++)
 {
     NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20-i, 8));
     npcs.Add(npc);
+    characters.Add(npc);
 }
 
 string[] level =
@@ -52,14 +56,9 @@ bool isPlaying = true;
 
 while (isPlaying)
 {
-    foreach (Player element in clones)
+    foreach (Character element in characters)
     {
         element.Display();
-    }
-
-    foreach (NonPlayerCharacter npc in npcs)
-    {
-        npc.Display();
     }
 
     string chosenAction = hero.ChooseAction();
@@ -85,6 +84,7 @@ while (isPlaying)
             case "clone":
                 Player clone = new Player(hero.name, "C", startingPosition, keyActionMap);
                 clones.Add(clone);
+                characters.Add(clone);
                 break;
             case "quitGame":
                 isPlaying = false;
