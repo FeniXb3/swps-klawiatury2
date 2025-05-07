@@ -61,43 +61,43 @@ while (isPlaying)
         element.Display();
     }
 
-    string chosenAction = hero.ChooseAction();
+    // string chosenAction = hero.ChooseAction();
 
-    foreach (Player element in clones)
-    {
-        RedrawCell(element.position);
-    }
+    // foreach (Player element in clones)
+    // {
+    //     RedrawCell(element.position);
+    // }
 
-    if (directionsMap.ContainsKey(chosenAction))
-    {
-        Point direction = directionsMap[chosenAction];
+    // if (directionsMap.ContainsKey(chosenAction))
+    // {
+    //     Point direction = directionsMap[chosenAction];
 
-        foreach (Player element in clones)
-        {
-            element.Move(direction, level);
-        }
-    }
-    else
-    {
-        switch (chosenAction)
-        {
-            case "clone":
-                Player clone = new Player(hero.name, "C", startingPosition, keyActionMap);
-                clones.Add(clone);
-                characters.Add(clone);
-                break;
-            case "quitGame":
-                isPlaying = false;
-                break;
-        }
-    }
+    //     foreach (Player element in clones)
+    //     {
+    //         element.Move(direction, level);
+    //     }
+    // }
+    // else
+    // {
+    //     switch (chosenAction)
+    //     {
+    //         case "clone":
+    //             Player clone = new Player(hero.name, "C", startingPosition, keyActionMap);
+    //             clones.Add(clone);
+    //             characters.Add(clone);
+    //             break;
+    //         case "quitGame":
+    //             isPlaying = false;
+    //             break;
+    //     }
+    // }
     
-    foreach(NonPlayerCharacter npc in npcs)
+    foreach(Character element in characters)
     {
-        RedrawCell(npc.position);
-        string npcAction = npc.ChooseAction();
-        Point npcDirection = directionsMap[npcAction];
-        npc.Move(npcDirection, level);
+        string chosenAction = element.ChooseAction();
+        RedrawCell(element.position);
+        Point direction = directionsMap[chosenAction];
+        element.Move(direction, level);
     }
 }
 
