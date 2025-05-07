@@ -52,24 +52,24 @@ foreach (string row in level)
     Console.WriteLine(row);
 }
 
+foreach (Character element in characters)
+{
+    element.Display();
+}
 bool isPlaying = true;
 
 while (isPlaying)
 {
     foreach (Character element in characters)
     {
-        element.Display();
-    }
-
-    foreach (Character element in characters)
-    {
         string chosenAction = element.ChooseAction();
-        RedrawCell(element.position);
         
         if (directionsMap.ContainsKey(chosenAction))
         {
+            RedrawCell(element.position);
             Point direction = directionsMap[chosenAction];
             element.Move(direction, level);
+            element.Display();
         }
         else
         {
