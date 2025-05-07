@@ -60,7 +60,13 @@ bool isPlaying = true;
 
 while (isPlaying)
 {
-    for (int i = 0; i < characters.Count; i++)
+    // We're saving last characters count before the loop
+    // so that the new clone will not perform it's action
+    // untill next turn.
+    // FIXME: If we add removing clones (or if any character
+    // would be removed), it would crash.
+    int charactersCount = characters.Count;
+    for (int i = 0; i < charactersCount; i++)
     {
         Character element = characters[i];
         string chosenAction = element.ChooseAction();
