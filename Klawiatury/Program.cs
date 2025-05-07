@@ -26,7 +26,7 @@ List<NonPlayerCharacter> npcs = new List<NonPlayerCharacter>();
 
 for (int i = 0; i < 10; i++)
 {
-    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20-i, 8));
+    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20 - i, 8));
     npcs.Add(npc);
     characters.Add(npc);
 }
@@ -61,43 +61,30 @@ while (isPlaying)
         element.Display();
     }
 
-    // string chosenAction = hero.ChooseAction();
-
-    // foreach (Player element in clones)
-    // {
-    //     RedrawCell(element.position);
-    // }
-
-    // if (directionsMap.ContainsKey(chosenAction))
-    // {
-    //     Point direction = directionsMap[chosenAction];
-
-    //     foreach (Player element in clones)
-    //     {
-    //         element.Move(direction, level);
-    //     }
-    // }
-    // else
-    // {
-    //     switch (chosenAction)
-    //     {
-    //         case "clone":
-    //             Player clone = new Player(hero.name, "C", startingPosition, keyActionMap);
-    //             clones.Add(clone);
-    //             characters.Add(clone);
-    //             break;
-    //         case "quitGame":
-    //             isPlaying = false;
-    //             break;
-    //     }
-    // }
-    
-    foreach(Character element in characters)
+    foreach (Character element in characters)
     {
         string chosenAction = element.ChooseAction();
         RedrawCell(element.position);
-        Point direction = directionsMap[chosenAction];
-        element.Move(direction, level);
+        
+        if (directionsMap.ContainsKey(chosenAction))
+        {
+            Point direction = directionsMap[chosenAction];
+            element.Move(direction, level);
+        }
+        else
+        {
+            switch (chosenAction)
+            {
+                case "clone":
+                    Player clone = new Player(hero.name, "C", startingPosition, keyActionMap);
+                    clones.Add(clone);
+                    characters.Add(clone);
+                    break;
+                case "quitGame":
+                    isPlaying = false;
+                    break;
+            }
+        }
     }
 }
 
