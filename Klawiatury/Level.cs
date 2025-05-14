@@ -1,6 +1,6 @@
 class Level
 {
-    private string[] levelData =
+    private string[] levelVisuals =
     [
         "####.###################################",
         "........................................",
@@ -16,11 +16,34 @@ class Level
         "###.###############################",
     ];
 
+    Cell[][] levelData;
+
+    public Level()
+    {
+        levelData = new Cell[levelVisuals.Length][];
+        for (int y = 0; y < levelVisuals.Length; y++)
+        {
+            string visualsRow = levelVisuals[y];
+            Cell[] dataRow = new Cell[visualsRow.Length];
+
+            for (int x = 0; x < visualsRow.Length; x++)
+            {
+                dataRow[x] = new Cell(visualsRow[x]);
+            }
+
+            levelData[y] = dataRow;
+        }
+    }
+
     public void Display()
     {
-        foreach (string row in levelData)
+        foreach (Cell[] row in levelData)
         {
-            Console.WriteLine(row);
+            foreach (Cell cell in row)
+            {
+                Console.Write(cell.visuals);
+            }
+            Console.WriteLine();
         }
     }
 
@@ -32,14 +55,14 @@ class Level
     public void RedrawCell(Point position)
     {
         Console.SetCursorPosition(position.x, position.y);
-        string row = levelData[position.y];
-        char cellData = row[position.x];
+        Cell[] row = levelData[position.y];
+        char cellData = row[position.x].visuals;
         Console.Write(cellData);
     }
 
     public char GetCell(int x, int y)
     {
-        return levelData[y][x];
+        return levelData[y][x].visuals;
     }
 
     public int GetRowWidth(int rowIndex)
