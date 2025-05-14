@@ -18,16 +18,11 @@ List<Character> characters = new List<Character>();
 
 Point startingPosition = new Point(4, 0);
 Player hero = new Player("Snake", "@", startingPosition, keyActionMap);
-List<Player> clones = new List<Player>();
-clones.Add(hero);
 characters.Add(hero);
-
-List<NonPlayerCharacter> npcs = new List<NonPlayerCharacter>();
 
 for (int i = 0; i < 2; i++)
 {
     NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20 - i, 8));
-    npcs.Add(npc);
     characters.Add(npc);
 }
 
@@ -84,7 +79,6 @@ while (isPlaying)
             {
                 case "clone":
                     PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, keyActionMap, hero);
-                    clones.Add(clone);
                     characters.Add(clone);
                     clone.Display();
                     break;
