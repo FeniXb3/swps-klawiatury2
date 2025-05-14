@@ -49,7 +49,7 @@ abstract class Character
         for (int i = 1; i <= Math.Abs(direction.x * speed); i++)
         {
             int coordinateToTest = position.x + i * signX;
-            if (coordinateToTest >= level.GetRowWidth(target.y) || coordinateToTest < 0 || level.GetCell(coordinateToTest, target.y) == '#')
+            if (!level.IsWalkable(coordinateToTest, target.y))
             {
                 break;
             }
