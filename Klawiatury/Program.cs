@@ -26,26 +26,8 @@ for (int i = 0; i < 10; i++)
     characters.Add(npc);
 }
 
-string[] level =
-[
-    "####.###################################",
-    "#......................................#",
-    "#.................................######",
-    "#...............#...................#",
-    "#.................................###",
-    "#.................................#",
-    "#.................................#",
-    "#.................................#",
-    "#.................................#",
-    "#.................................#",
-    "#.................................#",
-    "###################################",
-];
-
-foreach (string row in level)
-{
-    Console.WriteLine(row);
-}
+Level firstLevel = new Level();
+firstLevel.Display();
 
 foreach (Character element in characters)
 {
@@ -68,9 +50,9 @@ while (isPlaying)
         
         if (directionsMap.ContainsKey(chosenAction))
         {
-            RedrawCell(element.position);
+            firstLevel.RedrawCell(element.position);
             Point direction = directionsMap[chosenAction];
-            element.Move(direction, level);
+            element.Move(direction, firstLevel);
             element.Display();
         }
         else
@@ -90,7 +72,7 @@ while (isPlaying)
     }
 }
 
-Console.SetCursorPosition(0, level.Length);
+Console.SetCursorPosition(0, firstLevel.GetHeight());
 Console.WriteLine("Press Space to continue...");
 ConsoleKeyInfo consoleKeyInfo;
 
@@ -99,13 +81,7 @@ do
     consoleKeyInfo = Console.ReadKey(true);
 } while (consoleKeyInfo.Key != ConsoleKey.Spacebar);
 
-void RedrawCell(Point position)
-{
-    Console.SetCursorPosition(position.x, position.y);
-    string row = level[position.y];
-    char cellData = row[position.x];
-    Console.Write(cellData);
-}
+
 
 /*
 Player - klasa
