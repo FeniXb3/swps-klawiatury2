@@ -13,7 +13,7 @@ class Level
         "#.................................#",
         "#.................................#",
         "#.................................#",
-        "###################################",
+        "###.###############################",
     ];
 
     public void Display()
@@ -49,7 +49,6 @@ class Level
 
     public bool IsWalkable(int x, int y)
     {
-        return x >= 0 && x < GetRowWidth(y) && GetCell(x, y) != '#';
-        // return !(x >= GetRowWidth(y) || x < 0 || GetCell(x, y) == '#');
+        return y >= 0 && y < GetHeight() && x >= 0 && x < GetRowWidth(y) && GetCell(x, y) != '#';
     }
 }
