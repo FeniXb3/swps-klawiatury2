@@ -24,6 +24,6 @@ class Player : Character
     public override void Move(Point direction, string[] level)
     {
         base.Move(direction, level);
-        speed += 1;
+        // speed += 1;
     }
 }

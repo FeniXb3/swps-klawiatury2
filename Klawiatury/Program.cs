@@ -20,7 +20,7 @@ Point startingPosition = new Point(4, 0);
 Player hero = new Player("Snake", "@", startingPosition, keyActionMap);
 characters.Add(hero);
 
-for (int i = 0; i < 2; i++)
+for (int i = 0; i < 10; i++)
 {
     NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20 - i, 8));
     characters.Add(npc);
