@@ -7,6 +7,7 @@ keyActionMap.Add(ConsoleKey.W, "moveUp");
 keyActionMap.Add(ConsoleKey.S, "moveDown");
 keyActionMap.Add(ConsoleKey.C, "clone");
 keyActionMap.Add(ConsoleKey.Escape, "quitGame");
+keyActionMap.Add(ConsoleKey.Q, "attack");
 
 Dictionary<string, Point> directionsMap = new Dictionary<string, Point>();
 directionsMap.Add("moveLeft", new Point(-1, 0));
@@ -46,6 +47,12 @@ while (isPlaying)
     for (int i = 0; i < charactersCount; i++)
     {
         Character element = characters[i];
+        if (!element.isAlive)
+        {
+            firstLevel.RedrawCell(element.position);
+            continue;
+        }
+
         string chosenAction = element.ChooseAction();
         
         if (directionsMap.ContainsKey(chosenAction))
@@ -67,6 +74,15 @@ while (isPlaying)
                     break;
                 case "quitGame":
                     isPlaying = false;
+                    break;
+                case "attack":
+                    Point rightN = new Point(element.position.x + 1, element.position.y);
+                    Cell rightCell = firstLevel.GetCell(rightN);
+                    if (rightCell.IsOccupied())
+                    {
+                        Character occupant = rightCell.GetOccupant();
+                        occupant.Kill();
+                    }
                     break;
             }
         }

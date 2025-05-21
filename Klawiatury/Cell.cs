@@ -1,6 +1,3 @@
-
-
-
 class Cell
 {
     public char visuals;
@@ -9,6 +6,11 @@ class Cell
     public Cell(char visuals)
     {
         this.visuals = visuals;
+    }
+
+    internal Character GetOccupant()
+    {
+        return occupant;
     }
 
     internal bool IsOccupied()
