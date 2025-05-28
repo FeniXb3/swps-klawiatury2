@@ -86,10 +86,10 @@ while (isPlaying)
                             occupant.Kill();
                         }
                     }
-                    catch (ArgumentOutOfRangeException)
+                    catch (ArgumentOutOfRangeException ex)
                     {
                         Console.SetCursorPosition(0, firstLevel.GetHeight());
-                        Console.WriteLine("Invalid coordinates!");
+                        Console.WriteLine($"{ex.ParamName} is incorrect");
                     }
                   
                     break;
