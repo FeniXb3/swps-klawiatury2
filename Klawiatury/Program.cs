@@ -77,12 +77,21 @@ while (isPlaying)
                     break;
                 case "attack":
                     Point rightN = new Point(element.position.x + 1, element.position.y);
-                    Cell rightCell = firstLevel.GetCell(rightN);
-                    if (rightCell.IsOccupied())
+                    try
                     {
-                        Character occupant = rightCell.GetOccupant();
-                        occupant.Kill();
+                        Cell rightCell = firstLevel.GetCell(rightN);
+                        if (rightCell.IsOccupied())
+                        {
+                            Character occupant = rightCell.GetOccupant();
+                            occupant.Kill();
+                        }
                     }
+                    catch
+                    {
+                        Console.SetCursorPosition(0, firstLevel.GetHeight());
+                        Console.WriteLine("Invalid coordinates!");
+                    }
+                  
                     break;
             }
         }
