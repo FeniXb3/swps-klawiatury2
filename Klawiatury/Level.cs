@@ -84,6 +84,11 @@ class Level
 
     public Cell GetCell(int x, int y)
     {
+        bool areCoordinatesCorrect = y >= 0 && y < GetHeight() && x >= 0 && x < GetRowWidth(y);
+        if (!areCoordinatesCorrect)
+        {
+            throw new ArgumentOutOfRangeException();
+        }
         return levelData[y][x];
     }
     
