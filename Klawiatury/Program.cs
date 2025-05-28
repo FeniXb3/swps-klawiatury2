@@ -86,7 +86,7 @@ while (isPlaying)
                             occupant.Kill();
                         }
                     }
-                    catch
+                    catch (IndexOutOfRangeException)
                     {
                         Console.SetCursorPosition(0, firstLevel.GetHeight());
                         Console.WriteLine("Invalid coordinates!");
