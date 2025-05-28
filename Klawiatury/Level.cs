@@ -87,13 +87,13 @@ class Level
         bool isYCorrect = y >= 0 && y < GetHeight();
         if (!isYCorrect)
         {
-            throw new ArgumentOutOfRangeException(nameof(y));
+            throw new ArgumentOutOfRangeException(nameof(y), y, "Incorrect coordinates");
         }
 
         bool isXCorrect = x >= 0 && x < GetRowWidth(y);
         if (!isXCorrect)
         {
-            throw new ArgumentOutOfRangeException(nameof(x));
+            throw new ArgumentOutOfRangeException(nameof(x), x, "Incorrect coordinates");
         }
         return levelData[y][x];
     }

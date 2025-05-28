@@ -89,7 +89,7 @@ while (isPlaying)
                     catch (ArgumentOutOfRangeException ex)
                     {
                         Console.SetCursorPosition(0, firstLevel.GetHeight());
-                        Console.WriteLine($"{ex.ParamName} is incorrect");
+                        Console.WriteLine($"{ex.ParamName} has incorrect value: {ex.ActualValue}");
                     }
                   
                     break;
