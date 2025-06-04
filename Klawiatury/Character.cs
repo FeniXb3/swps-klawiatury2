@@ -16,7 +16,7 @@ abstract class Character
         this.position = position;
         this.previousPosition = position;
         this.level = level;
-        
+
         level.OccupyCell(position, this);
         cell = level.GetCell(position);
     }
@@ -25,9 +25,9 @@ abstract class Character
 
     public virtual void Move(Point direction)
     {
-        previousPosition = position;  
+        previousPosition = position;
         position = CalculateTargetPosition(direction);
-        
+
         level.LeaveCell(previousPosition);
         level.OccupyCell(position, this);
         cell = level.GetCell(position);
@@ -56,7 +56,7 @@ abstract class Character
         for (int i = 1; i <= Math.Abs(direction.x * speed); i++)
         {
             int coordinateToTest = position.x + i * signX;
-            if (!level.IsWalkable(coordinateToTest, target.y) || level.IsCellOccupied(coordinateToTest,  target.y))
+            if (!level.IsWalkable(coordinateToTest, target.y) || level.IsCellOccupied(coordinateToTest, target.y))
             {
                 break;
             }
@@ -83,5 +83,44 @@ abstract class Character
         isAlive = false;
         cell.Leave();
         cell = null;
+    }
+
+    internal void Attack()
+    {
+        // TODO: Experiment with delayed attacks with turn counter
+
+        // Choosing attack target:
+        // 1. Scan surroundings to get all occupied cells
+        //  a. left/right/top/bottom
+        //  b. a + diagonals
+        // 2. Let character choose target
+        // 3. Attack chosen target 
+
+        List<Point> attackDirections = new List<Point>
+        {
+            new Point(-1, 0),
+            new Point(1, 0),
+            new Point(0, -1),
+            new Point(0, 1),
+        };
+
+        foreach (Point direction in attackDirections)
+        {
+            Point coordinatesToCheck = new Point(position.x + direction.x, position.y + direction.y);
+            try
+            {
+                Cell cellToCheck = level.GetCell(coordinatesToCheck);
+                if (cellToCheck.IsOccupied())
+                {
+                    Character occupant = cellToCheck.GetOccupant();
+                    occupant.Kill();
+                }
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.SetCursorPosition(0, level.GetHeight());
+                Console.WriteLine($"{ex.ParamName} has incorrect value: {ex.ActualValue}");
+            }
+        }
     }
 }
