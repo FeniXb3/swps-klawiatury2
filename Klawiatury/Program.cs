@@ -15,19 +15,20 @@ directionsMap.Add("moveRight", new Point(1, 0));
 directionsMap.Add("moveUp", new Point(0, -1));
 directionsMap.Add("moveDown", new Point(0, 1));
 
+Level firstLevel = new Level();
+
 List<Character> characters = new List<Character>();
 
 Point startingPosition = new Point(1, 0);
-Player hero = new Player("Snake", "@", startingPosition, keyActionMap);
+Player hero = new Player("Snake", "@", startingPosition, firstLevel, keyActionMap);
 characters.Add(hero);
 
 for (int i = 0; i < 10; i++)
 {
-    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(20 - i, 8));
+    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(10 - i, 1), firstLevel);
     characters.Add(npc);
 }
 
-Level firstLevel = new Level();
 firstLevel.Display();
 
 foreach (Character element in characters)
@@ -68,10 +69,8 @@ while (isPlaying)
             switch (chosenAction)
             {
                 case "clone":
-                    PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, keyActionMap, hero);
+                    PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, firstLevel, keyActionMap, hero);
                     characters.Add(clone);
-                    firstLevel.OccupyCell(clone.position, clone);
-                    clone.cell = firstLevel.GetCell(clone.position);
                     clone.Display();
                     break;
                 case "quitGame":

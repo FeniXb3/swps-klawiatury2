@@ -8,12 +8,15 @@ abstract class Character
     internal bool isAlive = true;
     public Cell? cell;
 
-    public Character(string name, string avatar, Point position)
+    public Character(string name, string avatar, Point position, Level level)
     {
         this.name = name;
         this.avatar = avatar;
         this.position = position;
         this.previousPosition = position;
+        
+        level.OccupyCell(position, this);
+        cell = level.GetCell(position);
     }
 
     public abstract string ChooseAction();
