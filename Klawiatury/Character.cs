@@ -76,7 +76,7 @@ abstract class Character
     internal void Kill()
     {
         isAlive = false;
-        cell?.Leave();
+        cell.Leave();
         cell = null;
     }
 }

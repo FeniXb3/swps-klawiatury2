@@ -17,7 +17,7 @@ directionsMap.Add("moveDown", new Point(0, 1));
 
 List<Character> characters = new List<Character>();
 
-Point startingPosition = new Point(4, 0);
+Point startingPosition = new Point(1, 0);
 Player hero = new Player("Snake", "@", startingPosition, keyActionMap);
 characters.Add(hero);
 
@@ -70,6 +70,8 @@ while (isPlaying)
                 case "clone":
                     PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, keyActionMap, hero);
                     characters.Add(clone);
+                    firstLevel.OccupyCell(clone.position, clone);
+                    clone.cell = firstLevel.GetCell(clone.position);
                     clone.Display();
                     break;
                 case "quitGame":
