@@ -59,7 +59,7 @@ while (isPlaying)
         if (directionsMap.ContainsKey(chosenAction))
         {
             Point direction = directionsMap[chosenAction];
-            element.Move(direction, firstLevel);
+            element.Move(direction);
 
             firstLevel.RedrawCell(element.previousPosition);
             element.Display();

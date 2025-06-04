@@ -7,6 +7,7 @@ abstract class Character
     public string avatar;
     internal bool isAlive = true;
     public Cell? cell;
+    private Level level;
 
     public Character(string name, string avatar, Point position, Level level)
     {
@@ -14,6 +15,7 @@ abstract class Character
         this.avatar = avatar;
         this.position = position;
         this.previousPosition = position;
+        this.level = level;
         
         level.OccupyCell(position, this);
         cell = level.GetCell(position);
@@ -21,17 +23,17 @@ abstract class Character
 
     public abstract string ChooseAction();
 
-    public virtual void Move(Point direction, Level level)
+    public virtual void Move(Point direction)
     {
         previousPosition = position;  
-        position = CalculateTargetPosition(direction, level);
+        position = CalculateTargetPosition(direction);
         
         level.LeaveCell(previousPosition);
         level.OccupyCell(position, this);
         cell = level.GetCell(position);
     }
 
-    private Point CalculateTargetPosition(Point direction, Level level)
+    private Point CalculateTargetPosition(Point direction)
     {
         Point target = position;
 
