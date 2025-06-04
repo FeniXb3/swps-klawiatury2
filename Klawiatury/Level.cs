@@ -103,6 +103,11 @@ class Level
         return GetCell(coordinates.x, coordinates.y);
     }
 
+    public bool IsCellOccupied(Point poisition)
+    {
+        return IsCellOccupied(poisition.x, poisition.y);
+    }
+
     public bool IsCellOccupied(int x, int y)
     {
         return GetCell(x, y).IsOccupied(); 

@@ -25,7 +25,7 @@ characters.Add(hero);
 
 for (int i = 0; i < 10; i++)
 {
-    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(10 - i, 1), firstLevel);
+    NonPlayerCharacter npc = new NonPlayerCharacter("Liquid", "L", new Point(10 - i, 5), firstLevel);
     characters.Add(npc);
 }
 
@@ -69,6 +69,10 @@ while (isPlaying)
             switch (chosenAction)
             {
                 case "clone":
+                    if (firstLevel.IsCellOccupied(startingPosition))
+                    {
+                        break;
+                    }
                     PlayerClone clone = new PlayerClone(hero.name, "C", startingPosition, firstLevel, keyActionMap, hero);
                     characters.Add(clone);
                     clone.Display();
