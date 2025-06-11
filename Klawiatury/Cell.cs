@@ -1,11 +1,12 @@
 class Cell
 {
-    public char visuals;
+    public char Visuals { get; }
+
     private Character? occupant;
 
     public Cell(char visuals)
     {
-        this.visuals = visuals;
+        this.Visuals = visuals;
     }
 
     internal Character GetOccupant()
