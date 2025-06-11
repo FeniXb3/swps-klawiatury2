@@ -81,7 +81,7 @@ abstract class Character
     internal void Kill()
     {
         isAlive = false;
-        cell.Leave();
+        cell?.Leave();
         cell = null;
     }
 
@@ -112,8 +112,8 @@ abstract class Character
                 Cell cellToCheck = level.GetCell(coordinatesToCheck);
                 if (cellToCheck.IsOccupied())
                 {
-                    Character occupant = cellToCheck.GetOccupant();
-                    occupant.Kill();
+                    Character occupant = cellToCheck.Occupant!;
+                    occupant?.Kill();
                 }
             }
             catch (ArgumentOutOfRangeException ex)

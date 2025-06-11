@@ -57,7 +57,7 @@ class Level
         Cell cell = GetCell(position);
         if (cell.IsOccupied())
         {
-            cell.GetOccupant().Display();
+            cell.Occupant?.Display();
         }
         else
         {
