@@ -26,10 +26,7 @@ class Cell
 
     internal void Occupy(Character character)
     {
-        if (character == null)
-        {
-            throw new ArgumentNullException(nameof(character));
-        }
+        ArgumentNullException.ThrowIfNull(character);
         occupant = character;
     }
 }
