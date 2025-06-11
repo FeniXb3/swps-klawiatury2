@@ -2,9 +2,12 @@ class Cell
 {
     public char Visuals { get; }
 
-    public Cell(char visuals)
+    public Point position;
+
+    public Cell(char visuals, int x, int y)
     {
         this.Visuals = visuals;
+        position = new Point(x, y);
     }
 
     public Character? Occupant { get; private set; }
@@ -23,5 +26,19 @@ class Cell
     {
         ArgumentNullException.ThrowIfNull(character);
         Occupant = character;
+    }
+
+    internal void Display()
+    {
+        if (IsOccupied())
+        {
+            Occupant?.Display();
+        }
+        else
+        {
+            Console.SetCursorPosition(position.x, position.y);
+            char cellData = Visuals;
+            Console.Write(cellData);
+        }
     }
 }

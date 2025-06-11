@@ -31,10 +31,6 @@ for (int i = 0; i < 10; i++)
 
 firstLevel.Display();
 
-foreach (Character element in characters)
-{
-    element.Display();
-}
 bool isPlaying = true;
 
 while (isPlaying)

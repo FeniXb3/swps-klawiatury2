@@ -28,7 +28,7 @@ class Level
 
             for (int x = 0; x < visualsRow.Length; x++)
             {
-                dataRow[x] = new Cell(visualsRow[x]);
+                dataRow[x] = new Cell(visualsRow[x], x, y);
             }
 
             levelData[y] = dataRow;
@@ -41,7 +41,7 @@ class Level
         {
             foreach (Cell cell in row)
             {
-                Console.Write(cell.Visuals);
+                cell.Display();
             }
             Console.WriteLine();
         }
@@ -55,16 +55,7 @@ class Level
     public void RedrawCell(Point position)
     {
         Cell cell = GetCell(position);
-        if (cell.IsOccupied())
-        {
-            cell.Occupant?.Display();
-        }
-        else
-        {
-            Console.SetCursorPosition(position.x, position.y);
-            char cellData = cell.Visuals;
-            Console.Write(cellData);
-        }
+        cell.Display();
     }
 
     public char GetCellVisuals(int x, int y)
